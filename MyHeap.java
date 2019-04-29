@@ -12,6 +12,15 @@ public class MyHeap{
     }
   }
 
+  private static void pushUp(int[]data,int index) {
+    while (index > 0) {
+      if (data[(index-1)/2] < data[index]) {
+        swap(data,index,(index-1)/2);
+        index = (index-1)/2;
+      }
+    }
+  }
+
   private static void swap(int[]data,int ind1,int ind2) {
     int k = data[ind1];
     data[ind1] = data[ind2];
