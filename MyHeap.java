@@ -34,6 +34,10 @@ public class MyHeap{
   }
 
   public static void heapsort(int[] data) {
-    
+    heapify(data);
+    for (int i = 0;i < data.length - 1;i += 1) {
+      swap(data,0,data.length-1-i);
+      pushDown(data,data.length - i,0);
+    }
   }
 }
