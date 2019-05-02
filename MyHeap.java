@@ -1,7 +1,7 @@
 public class MyHeap{
   private static void pushDown(int[]data,int size,int index) {
-    while ((2*index+1 < size && data[2*index+1] > data[index]) || (2*index+2 < size && data[2*index+2] > data[index])) {
-      if (2*index+2 < size && data[2*index+2] > data[2*index+1]) {
+    while ((2*index+1 < size-1 && data[2*index+1] > data[index]) || (2*index+2 < size-1 && data[2*index+2] > data[index])) {
+      if (2*index+2 < size-1 && data[2*index+2] > data[2*index+1]) {
         swap(data,index,2*index+2);
         index = 2*index+2;
       }
@@ -34,10 +34,23 @@ public class MyHeap{
   }
 
   public static void heapsort(int[] data) {
+    //printList(data);
     heapify(data);
+    //printList(data);
+    //System.out.println("*********************");
     for (int i = 0;i < data.length - 1;i += 1) {
       swap(data,0,data.length-1-i);
+      //printList(data);
       pushDown(data,data.length - i,0);
+      //printList(data);
+      //System.out.println("-----------------------");
     }
+  }
+
+  private static void printList(int[] data) {
+    for (int i = 0;i < data.length;i += 1) {
+      System.out.print(data[i] + " ");
+    }
+    System.out.println();
   }
 }
